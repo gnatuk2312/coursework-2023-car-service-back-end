@@ -1,7 +1,10 @@
-import { GenerateTokenDTO } from '../dto/generate-token.dto';
-
 import { JwtSignOptions } from '@nestjs/jwt';
 
+import { IAdmin } from 'src/modules/admin/interfaces/admin.interface';
+import { ITokenPayload } from './token-payload.interface';
+
 export interface ITokenService {
-  generateToken(dto: GenerateTokenDTO, options?: JwtSignOptions): string;
+  createPayload(admin: IAdmin): ITokenPayload;
+  generateToken(payload: ITokenPayload, options?: JwtSignOptions): string;
+  verifyToken(token: string, options?: JwtSignOptions): ITokenPayload;
 }

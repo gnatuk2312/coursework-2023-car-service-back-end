@@ -1,4 +1,5 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { BadRequestException, Inject, Injectable } from '@nestjs/common';
+import * as bcrypt from 'bcryptjs';
 
 import { AdminRepository } from './admin.repository';
 import { IAdminService } from './interfaces/admin-service.interface';
@@ -17,10 +18,14 @@ export class AdminService implements IAdminService {
   public async create(dto: CreateAdminDTO): Promise<IAdmin> {
     const { email, password } = dto;
 
+    if (await this.getByEmail(email)) {
+      throw new BadRequestException({ message: 'Email is already in use' });
+    }
+
     const admin = new Admin();
 
     admin.email = email;
-    admin.password = password;
+    admin.password = await bcrypt.hash(password, 5);
 
     return await this.adminRepository.create(admin);
   }

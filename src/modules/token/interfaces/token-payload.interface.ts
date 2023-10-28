@@ -1,4 +1,4 @@
-export class GenerateTokenDTO {
+export interface ITokenPayload {
   userId: string;
   email: string;
 }
