@@ -2,7 +2,7 @@ import { registerAs } from '@nestjs/config';
 import { config as dotenvConfig } from 'dotenv';
 import { DataSource, DataSourceOptions } from 'typeorm';
 
-import { CreateAdminTable1697645342657 } from '../migrations/1697645342657-create-admin-table';
+import { CreateAdminTable1698498752886 } from '../migrations/1698498752886-create-admin-table';
 
 dotenvConfig({ path: '.env' });
 
@@ -14,7 +14,7 @@ const config = {
   password: `${process.env.DATABASE_PASSWORD}`,
   database: `${process.env.DATABASE_NAME}`,
   entities: ['dist/**/*.entity{.ts,.js}'],
-  migrations: [CreateAdminTable1697645342657],
+  migrations: [CreateAdminTable1698498752886],
   // migrations: ['dist/migrations/*{.ts,.js}'],
   autoLoadEntities: true,
   synchronize: false,

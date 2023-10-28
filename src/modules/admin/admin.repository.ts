@@ -13,7 +13,15 @@ export class AdminRepository implements IAdminRepository {
     private readonly adminRepository: Repository<Admin>,
   ) {}
 
-  public async getAll(): Promise<IAdmin[]> {
-    return await this.adminRepository.find();
+  public async create(entity: IAdmin): Promise<IAdmin> {
+    return await this.adminRepository.save(entity);
+  }
+
+  public async getById(id: string): Promise<IAdmin> {
+    return await this.adminRepository.findOne({ where: { id } });
+  }
+
+  public async getByEmail(email: string): Promise<IAdmin> {
+    return await this.adminRepository.findOne({ where: { email } });
   }
 }
