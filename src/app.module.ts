@@ -8,6 +8,7 @@ import { AdminModule } from './modules/admin/admin.module';
 import { TokenModule } from './modules/token/token.module';
 import { ClientModule } from './modules/client/client.module';
 import { VisitModule } from './modules/visit/visit.module';
+import { VehicleModule } from './modules/vehicle/vehicle.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { VisitModule } from './modules/visit/visit.module';
     TokenModule,
     ClientModule,
     VisitModule,
+    VehicleModule,
   ],
 })
 export class AppModule {}

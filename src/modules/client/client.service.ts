@@ -1,4 +1,4 @@
-import { BadRequestException, Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 
 import { IClientService } from './interfaces/client-service.interface';
 import { PaginatedData } from 'src/common/interfaces/interfaces.common';
@@ -49,7 +49,7 @@ export class ClientService implements IClientService {
     const client = await this.clientRepository.getById(id);
 
     if (!client) {
-      throw new BadRequestException({
+      throw new NotFoundException({
         message: 'There is no client with this id',
       });
     }
