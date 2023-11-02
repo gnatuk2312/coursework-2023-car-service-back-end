@@ -6,6 +6,7 @@ import typeorm from './config/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { TokenModule } from './modules/token/token.module';
+import { ClientModule } from './modules/client/client.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { TokenModule } from './modules/token/token.module';
     AuthModule,
     AdminModule,
     TokenModule,
+    ClientModule,
   ],
 })
 export class AppModule {}

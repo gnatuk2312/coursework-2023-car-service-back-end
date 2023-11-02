@@ -4,6 +4,7 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 
 import { CreateAdminTable1698498752886 } from '../migrations/1698498752886-create-admin-table';
 import { CreateTokenTable1698501251052 } from '../migrations/1698501251052-create-token-table';
+import { CreateClientTable1698927279477 } from '../migrations/1698927279477-create-client-table';
 
 dotenvConfig({ path: '.env' });
 
@@ -15,7 +16,11 @@ const config = {
   password: `${process.env.DATABASE_PASSWORD}`,
   database: `${process.env.DATABASE_NAME}`,
   entities: ['dist/**/*.entity{.ts,.js}'],
-  migrations: [CreateAdminTable1698498752886, CreateTokenTable1698501251052],
+  migrations: [
+    CreateAdminTable1698498752886,
+    CreateTokenTable1698501251052,
+    CreateClientTable1698927279477,
+  ],
   // migrations: ['dist/migrations/*{.ts,.js}'],
   autoLoadEntities: true,
   synchronize: false,
