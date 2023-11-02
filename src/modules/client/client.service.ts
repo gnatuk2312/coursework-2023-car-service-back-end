@@ -36,12 +36,6 @@ export class ClientService implements IClientService {
 
     const client = await this.clientRepository.getById(id);
 
-    if (!client) {
-      throw new BadRequestException({
-        message: 'There is no client with this id',
-      });
-    }
-
     client.firstName = firstName;
     client.lastName = lastName;
     client.about = about;
@@ -52,7 +46,15 @@ export class ClientService implements IClientService {
   }
 
   public async getById(id: string): Promise<IClient> {
-    return await this.clientRepository.getById(id);
+    const client = await this.clientRepository.getById(id);
+
+    if (!client) {
+      throw new BadRequestException({
+        message: 'There is no client with this id',
+      });
+    }
+
+    return client;
   }
 
   public async getAll(

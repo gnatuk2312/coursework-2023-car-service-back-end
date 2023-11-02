@@ -5,6 +5,7 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 import { CreateAdminTable1698498752886 } from '../migrations/1698498752886-create-admin-table';
 import { CreateTokenTable1698501251052 } from '../migrations/1698501251052-create-token-table';
 import { CreateClientTable1698927279477 } from '../migrations/1698927279477-create-client-table';
+import { CreateVisitTable1698930001706 } from '../migrations/1698930001706-create-visit-table';
 
 dotenvConfig({ path: '.env' });
 
@@ -20,6 +21,7 @@ const config = {
     CreateAdminTable1698498752886,
     CreateTokenTable1698501251052,
     CreateClientTable1698927279477,
+    CreateVisitTable1698930001706,
   ],
   // migrations: ['dist/migrations/*{.ts,.js}'],
   autoLoadEntities: true,
