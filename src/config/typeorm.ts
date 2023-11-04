@@ -7,6 +7,7 @@ import { CreateTokenTable1698501251052 } from '../migrations/1698501251052-creat
 import { CreateClientTable1698927279477 } from '../migrations/1698927279477-create-client-table';
 import { CreateVisitTable1698930001706 } from '../migrations/1698930001706-create-visit-table';
 import { CreateVehicleTable1698933569419 } from '../migrations/1698933569419-create-vehicle-table';
+import { CreatePerformedWorkTable1699103227923 } from '../migrations/1699103227923-create-performed-work-table';
 
 dotenvConfig({ path: '.env' });
 
@@ -24,6 +25,7 @@ const config = {
     CreateClientTable1698927279477,
     CreateVisitTable1698930001706,
     CreateVehicleTable1698933569419,
+    CreatePerformedWorkTable1699103227923,
   ],
   // migrations: ['dist/migrations/*{.ts,.js}'],
   autoLoadEntities: true,
