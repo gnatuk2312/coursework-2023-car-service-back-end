@@ -10,6 +10,7 @@ import { ClientModule } from './modules/client/client.module';
 import { VisitModule } from './modules/visit/visit.module';
 import { VehicleModule } from './modules/vehicle/vehicle.module';
 import { PerformedWorkModule } from './modules/performed-work/performed-work.module';
+import { SparePartModule } from './modules/spare-part/spare-part.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { PerformedWorkModule } from './modules/performed-work/performed-work.mod
     VisitModule,
     VehicleModule,
     PerformedWorkModule,
+    SparePartModule,
   ],
 })
 export class AppModule {}
