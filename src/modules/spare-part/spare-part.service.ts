@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 
 import { ISparePartService } from './interfaces/spare-part-service.interface';
 import { PaginatedData } from 'src/common/interfaces/interfaces.common';
@@ -30,7 +30,27 @@ export class SparePartService implements ISparePartService {
   }
 
   public async getById(id: string): Promise<ISparePart> {
-    return await this.sparePartRepository.getById(id);
+    const sparePart = await this.sparePartRepository.getById(id);
+
+    if (!sparePart) {
+      throw new NotFoundException({
+        message: 'There is no spare part with this id',
+      });
+    }
+
+    return sparePart;
+  }
+
+  public async getByIds(ids: string[]): Promise<ISparePart[]> {
+    const spareParts = await this.sparePartRepository.getByIds(ids);
+
+    if (spareParts.length === 0) {
+      throw new NotFoundException({
+        message: 'There are no spare parts with these ids',
+      });
+    }
+
+    return spareParts;
   }
 
   public async getAll(

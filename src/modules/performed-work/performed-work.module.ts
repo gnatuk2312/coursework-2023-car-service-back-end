@@ -7,11 +7,13 @@ import { AuthModule } from 'src/auth/auth.module';
 import { PerformedWorkRepository } from './performed-work.repository';
 import { VehicleModule } from '../vehicle/vehicle.module';
 import { PerformedWork } from './entities/performed-work.entity';
+import { SparePartModule } from '../spare-part/spare-part.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([PerformedWork]),
     VehicleModule,
+    SparePartModule,
     AuthModule,
   ],
   providers: [PerformedWorkService, PerformedWorkRepository],

@@ -8,19 +8,26 @@ import { IPerformedWorkRepository } from './interfaces/performed-work-repository
 import { VehicleService } from '../vehicle/vehicle.service';
 import { IVehicleService } from '../vehicle/interfaces/vehicle-service.interface';
 import { PerformedWork } from './entities/performed-work.entity';
+import { SparePartService } from '../spare-part/spare-part.service';
+import { ISparePartService } from '../spare-part/interfaces/spare-part-service.interface';
 
 @Injectable()
 export class PerformedWorkService implements IPerformedWorkService {
   constructor(
     @Inject(PerformedWorkRepository)
     private readonly performedWorkRepository: IPerformedWorkRepository,
-    @Inject(VehicleService) private readonly vehicleService: IVehicleService,
+    @Inject(VehicleService)
+    private readonly vehicleService: IVehicleService,
+    @Inject(SparePartService)
+    private readonly sparePartService: ISparePartService,
   ) {}
 
   public async create(dto: CreatePerformedWorkDTO): Promise<IPerformedWork> {
-    const { title, description, price, currency, vehicleId } = dto;
+    const { title, description, price, currency, vehicleId, sparePartIds } =
+      dto;
 
     const vehicle = await this.vehicleService.getById(vehicleId);
+    const spareParts = await this.sparePartService.getByIds(sparePartIds);
 
     const performedWork = new PerformedWork();
 
@@ -29,6 +36,7 @@ export class PerformedWorkService implements IPerformedWorkService {
     performedWork.price = price;
     performedWork.currency = currency;
     performedWork.vehicle = vehicle;
+    performedWork.spareParts = spareParts;
 
     return await this.performedWorkRepository.create(performedWork);
   }

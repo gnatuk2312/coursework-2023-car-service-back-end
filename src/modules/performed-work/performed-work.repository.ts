@@ -20,7 +20,7 @@ export class PerformedWorkRepository implements IPerformedWorkRepository {
   public async getById(id: string): Promise<IPerformedWork> {
     return await this.performedWorkRepository.findOne({
       where: { id },
-      relations: ['vehicle'],
+      relations: ['vehicle', 'spareParts'],
     });
   }
 

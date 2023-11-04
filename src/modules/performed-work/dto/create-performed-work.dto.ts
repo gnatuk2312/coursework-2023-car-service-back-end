@@ -6,4 +6,5 @@ export class CreatePerformedWorkDTO {
   price: number;
   currency: Currency;
   vehicleId: string;
+  sparePartIds: string[];
 }

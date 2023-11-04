@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 
 import { ISparePartRepository } from './interfaces/spare-part-repository.interface';
 import { PaginatedData } from 'src/common/interfaces/interfaces.common';
@@ -22,6 +22,10 @@ export class SparePartRepository implements ISparePartRepository {
 
   public async getById(id: string): Promise<ISparePart> {
     return await this.sparePartRepository.findOne({ where: { id } });
+  }
+
+  public async getByIds(ids: string[]): Promise<ISparePart[]> {
+    return await this.sparePartRepository.find({ where: { id: In(ids) } });
   }
 
   public async getAll(

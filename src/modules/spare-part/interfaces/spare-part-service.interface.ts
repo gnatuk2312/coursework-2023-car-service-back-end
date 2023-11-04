@@ -6,6 +6,7 @@ import { GetAllSparePartsQueryParamsDTO } from '../dto/get-all-spare-parts-query
 export interface ISparePartService {
   create(dto: CreateSparePartDTO): Promise<ISparePart>;
   getById(id: string): Promise<ISparePart>;
+  getByIds(ids: string[]): Promise<ISparePart[]>;
   getAll(
     queryParams: GetAllSparePartsQueryParamsDTO,
   ): Promise<PaginatedData<ISparePart>>;
